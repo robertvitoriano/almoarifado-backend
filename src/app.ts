@@ -1,15 +1,15 @@
+import "reflect-metadata";
+import './database'
 import path from 'path'
 import morgan from 'morgan'
 import express from 'express'
 import cors from 'cors'
-import "reflect-metadata";
 import dotenv from 'dotenv'
 import routes from './routes'
 dotenv.config();
 
 // const emailJob  = require('./jobs/emailJob')
 
-import './database'
 
 
 const app = express();

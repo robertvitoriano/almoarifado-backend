@@ -1,5 +1,5 @@
 import {v4 as uuidV4} from 'uuid'
-import {CreateDateColumn, Entity, PrimaryColumn, Column} from  "typeorm"
+import {CreateDateColumn, Entity, PrimaryColumn, Column, Unique} from  "typeorm"
 
 @Entity("users")
 class User {
@@ -11,6 +11,7 @@ class User {
   name:String
 
   @Column()
+  @Unique(["email"])
   email:String
 
   @Column()

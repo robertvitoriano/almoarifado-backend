@@ -2,10 +2,9 @@ import { Request, Response } from 'express';
 import {User} from '../entities/User';
 import { getRepository, Repository} from 'typeorm'
 import bcrypt from   'bcryptjs';
+import jwt from 'jsonwebtoken';
 
 export default class UserController {
-
-  constructor () {}
 
   private repository: Repository<User>
   
@@ -36,8 +35,46 @@ export default class UserController {
       res.json(user);
       
     }catch(error){
-      console.log(error);
+      console.error(error);
     }
+  }
+
+  public  login = async(req: Request, res: Response) => {
+    try{
+      this.repository = getRepository(User)
+
+      const{email, password} = req.body
+
+      const user = await this.repository.findOne({
+        where: {
+          email
+        }
+      })
+
+      const isPasswordCorrect = bcrypt.compare(password, String(user.password))
+      if(isPasswordCorrect){
+ 
+        const {name, level, email} = user
+
+        const token = jwt.sign({name, level, email}, process.env.JWT_SECRET)
+
+        res.json({
+          name,
+          level,
+          email,
+          token
+        })
+      }else{
+        res.json({
+          message: 'Senha incorreta'
+        })
+      }
+
+
+    }catch(error){
+      console.error(error);
+    }
+
   }
 
 }

@@ -3,6 +3,6 @@ import supervisorRoutes from './userRouter'
 
 const router =  Router()
 
-router.use('/supervisors', supervisorRoutes);
+router.use('/users', supervisorRoutes);
 
 export default router
