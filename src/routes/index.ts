@@ -1,5 +1,5 @@
 import {Router} from 'express'
-import supervisorRoutes from './supervisorRoutes'
+import supervisorRoutes from './userRouter'
 
 const router =  Router()
 

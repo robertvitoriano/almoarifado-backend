@@ -3,19 +3,19 @@ import {User} from '../entities/User';
 import { getRepository, Repository} from 'typeorm'
 import bcrypt from   'bcryptjs';
 
-export default class SupervisorController {
+export default class UserController {
 
   constructor () {}
 
   private repository: Repository<User>
   
-  public async getAllSupervisors(req: Request, res: Response) {
+  public async getAllUsers(req: Request, res: Response) {
 
   }
 
-  public  getSupervisorById = async(req: Request, res: Response) => {}
+  public  getUserById = async(req: Request, res: Response) => {}
 
-  public  createSupervisor = async(req: Request, res: Response) => {
+  public  createUser = async(req: Request, res: Response) => {
     try{
 
       this.repository = getRepository(User)
@@ -24,16 +24,16 @@ export default class SupervisorController {
   
       const encryptedPassword = await bcrypt.hash(String(password), 8)
   
-      const supervisor = await this.repository.create({
+      const user = await this.repository.create({
         email,
         password:String(encryptedPassword),
         name,
-        level:'supervisor'
+        level,
+        created_at: new Date(),
       })
+      this.repository.save(user)
   
-      this.repository.save(supervisor)
-  
-      res.json(supervisor);
+      res.json(user);
       
     }catch(error){
       console.log(error);
