@@ -26,7 +26,4 @@ class User {
 
   }
 }
-
-console.log(User)
-
 export { User }

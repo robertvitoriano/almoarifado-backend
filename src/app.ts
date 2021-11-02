@@ -9,6 +9,9 @@ dotenv.config();
 
 // const emailJob  = require('./jobs/emailJob')
 
+import './database'
+
+
 const app = express();
 
 app.use(morgan(":method :url :response-time  :status"))

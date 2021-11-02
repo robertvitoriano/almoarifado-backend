@@ -1,5 +1,5 @@
 {
-  "type": "mysql",
+  "type": "mysql2",
   "host": "",
   "port": 3306,
   "username": "",
