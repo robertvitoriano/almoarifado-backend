@@ -15,18 +15,19 @@ export default class SupervisorController {
   public  getSupervisorById = async(req: Request, res: Response) => {}
 
   public  createSupervisor = async(req: Request, res: Response) => {
-    console.log('heeeeeerreee')
 
     this.repository = getRepository(User)
 
-
-    const supervisors = await this.repository.create({
+    const supervisor = await this.repository.create({
       email: 'email@teste.com',
       password: '123156',
       name: 'naaam',
       level:'supervisor'
     })
-    res.json(supervisors);
+
+    this.repository.save(supervisor)
+
+    res.json(supervisor);
 
   }
 
