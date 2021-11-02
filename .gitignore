@@ -1,0 +1,5 @@
+node_modules
+config/local_variables.js
+/config/utils/getMongoUrl.js
+.env
+ormconfig.json
