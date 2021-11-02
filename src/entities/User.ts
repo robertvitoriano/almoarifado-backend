@@ -16,6 +16,9 @@ class User {
   @Column()
   password:String
 
+  @Column()
+  level:String
+
   @CreateDateColumn()
   created_at:Date
   

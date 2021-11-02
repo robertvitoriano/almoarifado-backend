@@ -4,7 +4,7 @@ import express from 'express'
 import cors from 'cors'
 import "reflect-metadata";
 import dotenv from 'dotenv'
-
+import routes from './routes'
 dotenv.config();
 
 // const emailJob  = require('./jobs/emailJob')
@@ -18,7 +18,7 @@ app.use(morgan(":method :url :response-time  :status"))
 
 app.use(cors());
 
-app.get('/',(request, response)=>{
+app.get('/s',(request, response)=>{
     
     response.json({
         message:'API is running !'
@@ -33,7 +33,8 @@ app.use(express.json());
 
 app.use(express.urlencoded({extended:false}));
 
-//router
+app.use(routes);
+
 
 // emailJob.start()
 
