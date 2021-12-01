@@ -70,7 +70,6 @@ export default class UserController {
         })
       }
 
-
     }catch(error){
       console.error(error);
     }
